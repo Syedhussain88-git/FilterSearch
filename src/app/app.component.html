@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="subDiv col-md-3 col-12 col-9 col-sm">
+      <div class="subInner">
+        <h5 class="documentsHead">Documents</h5>
+        <h6 class="searchHead">Search document or select category</h6>
+        <ul class="mainNav navbar-nav bd-navbar-nav">
+          <li class="nav-item" [ngClass]="{'active': selectedItem == 'all'}" (click)='myUpdt("all")'>All</li>
+          <li class="nav-item" [ngClass]="{'active': selectedItem == 'Financial'}" (click)='myUpdt("Financial")'>Financial</li>
+          <li class="nav-item" [ngClass]="{'active': selectedItem == 'Technical'}" (click)='myUpdt("Technical")'>Technical</li>
+          <li class="nav-item" [ngClass]="{'active': selectedItem == 'Marketing'}" (click)='myUpdt("Marketing")'>Marketing</li>
+          <li class="nav-item" [ngClass]="{'active': selectedItem == 'Human Resources'}" (click)='myUpdt("Human Resources")'>Human Resources</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mainDiv">
+      <div class="inputDiv">
+        <div (keyup)="updateResults()">
+          <input type="text" placeholder="Start typing document name..." [(ngModel)]="searchValue">
+        </div>
+      </div>
+      <div class="dataDiv">
+        <div class="datacolumn col-md-3 col-12 col-9 col-sm" *ngFor="let item of filteredItems">
+          <div class="typeColumn"><div class="minIcon">{{ item.type }}</div></div>
+          <div class="itemColumn">{{ item.project }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
